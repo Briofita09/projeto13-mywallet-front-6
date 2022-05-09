@@ -1,25 +1,28 @@
-import logo from './logo.svg';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState, useEffect } from 'react';
 import './App.css';
-
-function App() {
+import "./style.css";
+import Corpo from "./Corpo";
+import Cadastro from "./Cadastro";
+import Inicio from "./Inicio";
+import Entrada from "./Entrada";
+import Saida from "./Saida";
+export default  function App() {
+  const [token,setToken] =useState(['','']);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+      <BrowserRouter>
+      
+      <Routes>
+        <Route path="/" element={<Corpo token={token} setToken={setToken} />} /> 
+        <Route path="/cadastrar" element={<Cadastro />} />
+        <Route path="/Inicio" element={<Inicio token={token} setToken={setToken}/>} />
+        <Route path="/Entrada" element={<Entrada />} />
+        <Route path="/Saida" element={<Saida />} />
+      </Routes>
+      </BrowserRouter>
     </div>
+   
   );
+  
 }
-
-export default App;
